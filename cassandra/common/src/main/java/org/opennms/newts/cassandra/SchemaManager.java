@@ -57,6 +57,7 @@ public class SchemaManager implements AutoCloseable {
         m_keyspace = keyspace;
 
         Builder builder = Cluster.builder()
+                .withSSL()
                 .withPort(port)
                 .addContactPoints(host.split(","));
         if (username != null && password != null) {
