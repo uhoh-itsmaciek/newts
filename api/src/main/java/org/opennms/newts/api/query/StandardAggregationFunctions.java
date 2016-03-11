@@ -76,14 +76,14 @@ public enum StandardAggregationFunctions implements AggregationFunction {
 
         @Override
         public Double apply(Collection<Double> input) {
-	    if (input.isEmpty()) {
-		return Double.MAX_VALUE;
-	    }
 	    List<Double> sorted = new ArrayList<Double>();
 	    for (Double item : input) {
 		if (!Double.isNaN(item)) {
 		    sorted.add(item);
 		}
+	    }
+            if (sorted.isEmpty()) {
+		return Double.MAX_VALUE;
 	    }
 	    Collections.sort(sorted);
 	    int p95Idx = (int) (0.95 * sorted.size());
@@ -95,14 +95,14 @@ public enum StandardAggregationFunctions implements AggregationFunction {
 
         @Override
         public Double apply(Collection<Double> input) {
-	    if (input.isEmpty()) {
-		return Double.MAX_VALUE;
-	    }
 	    List<Double> sorted = new ArrayList<Double>();
 	    for (Double item : input) {
 		if (!Double.isNaN(item)) {
 		    sorted.add(item);
 		}
+	    }
+            if (sorted.isEmpty()) {
+		return Double.MAX_VALUE;
 	    }
 	    Collections.sort(sorted);
 	    int p99Idx = (int) (0.99 * sorted.size());
